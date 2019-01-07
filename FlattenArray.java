@@ -15,9 +15,13 @@ public class FlattenArray {
 	 * @param object
 	 */
     private static void flatten(Object object) {
+    	if (object==null) {
+            System.out.println("Object is null!");
+    		return;
+    	}
     	// If object is an array, go thru all items in the array, and
     	// flatten each (as necessary when the item is another array)
-        if (object.getClass().isArray()) {
+    	if (object.getClass().isArray()) {
             for (int i = 0; i < Array.getLength(object); i++) {
                 flatten(Array.get(object, i));//recursive call for item i
             }
@@ -31,7 +35,7 @@ public class FlattenArray {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// initialize a 3D array of integers
+		// initialize an array of integers
         int[][][] array = 	{
 	        					{	{ 1, 2, 3, 4 },
 	        						{ 5, 6, 7 },
@@ -51,6 +55,8 @@ public class FlattenArray {
 
         // flatten the array and print it to the console
         flatten(array);
+        System.out.println();
+        flatten(null);
 	}
 
 }
